@@ -1,0 +1,9 @@
+LICENSE
+README.md
+setup.py
+ImgToolBox/ImgFile.py
+ImgToolBox/__init__.py
+ImgToolBox.egg-info/PKG-INFO
+ImgToolBox.egg-info/SOURCES.txt
+ImgToolBox.egg-info/dependency_links.txt
+ImgToolBox.egg-info/top_level.txt

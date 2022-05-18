@@ -1,3 +1,16 @@
+Metadata-Version: 2.1
+Name: ImgToolBox
+Version: 1.2.5
+Summary: A package about the transformations between raw, csv and numpy array
+Home-page: https://github.com/LiaoU3/ImageToolBox.git
+Author: LiaoU3
+Author-email: vincent932693@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
 # Image Tool Box
 ----
 This is a python module to help us to do the tranformations between raw file, csv file, and numpy array.
