@@ -10,16 +10,16 @@ This is a python module to help us to do the tranformations between raw file, cs
 you can donload those module for the latest version with the command below
 
 ```shell
+handsomeguy@supercomputer:~$ pip install ImgToolBox
 handsomeguy@supercomputer:~$ pip install numpy
 handsomeguy@supercomputer:~$ pip install pandas
 ```
 ## Usage example
-your structure should look like this below
+your structure should looks like this below
 
 ```
 .
 +-- yourpythonfile.py
-+-- ImgToolBox.py
 |
 +--src/
    +--catimage.raw
@@ -29,18 +29,18 @@ your structure should look like this below
 |
 ```
 ```python
-# yourpythonfile.py
+# @yourpythonfile.py
 
-from ImgToolBox import raw2arr, arr2csv, csv2arr
+import ImgToolBox.ImgFile as ITB
 
 # you should put the path of raw file in the raw2arr fumction and you will get the numpy array from raw file
-array = raw2arr('src/catimage.raw')
+array = ITB.raw2arr('src/catimage.raw')
 
 # now you can get the numpy array from the path of csv file
-new_array = csv2arr('src/dogimage.csv')
+new_array = ITB.csv2arr('src/dogimage.csv')
 
 # aftere doing this, you could get the csv file in the path you want
-arr2csv(new_array, 'output/dogimage.csv')
+ITB.arr2csv(new_array, 'output/dogimage.csv')
 
 ```
 
@@ -53,6 +53,7 @@ arr2csv(new_array, 'output/dogimage.csv')
 * 1.2.3 fix some bugs
 * 1.2.4 fix some bugs
 * 1.2.5 fix some bugs
+* 1.2.6 Official version
 
 ## Author
 * Vincent Liao
