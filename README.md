@@ -3,11 +3,12 @@
 This is a python module to help us to do the tranformations between raw file, csv file, and numpy array.
 
 ## Requirements
-* python==3.9
-* numpy==1.22
-* pandas==1.4
+It would be better if you got those version number bigger than these below
+* python>=3.9
+* numpy>=1.22
+* pandas>=1.4
 
-you can donload those module for the latest version with the command below
+you can download those module for the latest version with the command below
 
 ```shell
 handsomeguy@supercomputer:~$ pip install ImgToolBox
@@ -15,7 +16,7 @@ handsomeguy@supercomputer:~$ pip install numpy
 handsomeguy@supercomputer:~$ pip install pandas
 ```
 ## Usage example
-your structure should looks like this below
+your structure could probably look like this below
 
 ```
 .
@@ -54,6 +55,7 @@ ITB.arr2csv(new_array, 'output/dogimage.csv')
 * 1.2.4 fix some bugs
 * 1.2.5 fix some bugs
 * 1.2.6 Official version
+* 1.2.7 update README.md
 
 ## Author
 * Vincent Liao
