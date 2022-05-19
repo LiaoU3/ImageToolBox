@@ -1,5 +1,5 @@
 # Image Tool Box
-----
+
 This is a python module to help us to do the tranformations between raw file, csv file, and numpy array.
 
 ## Requirements
