@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ImgToolBox
-Version: 1.2.7
+Version: 1.2.8
 Summary: A package about the transformations between raw, csv and numpy array
 Home-page: https://github.com/LiaoU3/ImageToolBox.git
 Author: LiaoU3
@@ -12,7 +12,7 @@ Description-Content-Type: text/markdown
 License-File: LICENSE
 
 # Image Tool Box
-----
+
 This is a python module to help us to do the tranformations between raw file, csv file, and numpy array.
 
 ## Requirements
@@ -69,6 +69,7 @@ ITB.arr2csv(new_array, 'output/dogimage.csv')
 * 1.2.5 fix some bugs
 * 1.2.6 Official version
 * 1.2.7 update README.md
+* 1.2.8 update the type hint of raw2arr
 
 ## Author
 * Vincent Liao

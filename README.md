@@ -56,6 +56,7 @@ ITB.arr2csv(new_array, 'output/dogimage.csv')
 * 1.2.5 fix some bugs
 * 1.2.6 Official version
 * 1.2.7 update README.md
+* 1.2.8 update the type hint of raw2arr
 
 ## Author
 * Vincent Liao

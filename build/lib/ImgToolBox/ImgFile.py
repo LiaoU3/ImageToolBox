@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-
-def raw2arr(rawPath: str, shape: tuple) -> np.ndarray:
+from typing import Tuple
+def raw2arr(rawPath: str, shape: Tuple[int, int]) -> np.ndarray:
     '''
     read a raw file as a numpy array
 
