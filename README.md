@@ -35,7 +35,7 @@ your structure could probably look like this below
 import ImgToolBox.ImgFile as ITB
 
 # you should put the path of raw file in the raw2arr fumction and you will get the numpy array from raw file
-array = ITB.raw2arr('src/catimage.raw')
+array = ITB.raw2arr('src/catimage.raw', (300, 800))
 
 # now you can get the numpy array from the path of csv file
 new_array = ITB.csv2arr('src/dogimage.csv')
