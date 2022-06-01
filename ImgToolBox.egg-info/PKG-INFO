@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ImgToolBox
-Version: 1.2.8
+Version: 1.3.1
 Summary: A package about the transformations between raw, csv and numpy array
 Home-page: https://github.com/LiaoU3/ImageToolBox.git
 Author: LiaoU3
@@ -48,10 +48,10 @@ your structure could probably look like this below
 import ImgToolBox.ImgFile as ITB
 
 # you should put the path of raw file in the raw2arr fumction and you will get the numpy array from raw file
-array = ITB.raw2arr('src/catimage.raw')
+array = ITB.toArray('src/catimage.raw', (300, 800))
 
 # now you can get the numpy array from the path of csv file
-new_array = ITB.csv2arr('src/dogimage.csv')
+new_array = ITB.toArray('src/dogimage.csv')
 
 # aftere doing this, you could get the csv file in the path you want
 ITB.arr2csv(new_array, 'output/dogimage.csv')
@@ -70,6 +70,7 @@ ITB.arr2csv(new_array, 'output/dogimage.csv')
 * 1.2.6 Official version
 * 1.2.7 update README.md
 * 1.2.8 update the type hint of raw2arr
+* 1.3.0 replace function csv2arr and raw2arr with toArray
 
 ## Author
 * Vincent Liao

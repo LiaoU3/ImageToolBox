@@ -1,14 +1,16 @@
 import pandas as pd
 import numpy as np
 from typing import Tuple
-def raw2arr(rawPath: str, shape: Tuple[int, int]) -> np.ndarray:
+from typing import Optional
+
+def toArray(filepath: str, shape: Optional[Tuple[int, int]] = None) -> np.ndarray:
     '''
-    read a raw file as a numpy array
+    read a file and turn it to a numpy array
 
     Parameters
     ----------
-    rawPath : str
-        Path of the RAW file
+    filepath : str
+        Path of the RAW or CSV file
     shape : tuple
         Shape of image array (row, col)
 
@@ -17,9 +19,52 @@ def raw2arr(rawPath: str, shape: Tuple[int, int]) -> np.ndarray:
     arr16b : np.array, dtype = np.uint16
         16-bit image array.
     '''
-    raw = np.fromfile(rawPath, dtype=np.uint8)
-    arr16b = np.reshape((raw[0::2] *256 + raw[1::2]), shape)
-    return arr16b
+    def raw2arr(rawPath: str, shape: Tuple[int, int]) -> np.ndarray:
+        '''
+        read a raw file as a numpy array
+
+        Parameters
+        ----------
+        rawPath : str
+            Path of the RAW file
+        shape : tuple
+            Shape of image array (row, col)
+
+        Returns
+        -------
+        arr16b : np.array, dtype = np.uint16
+            16-bit image array.
+        '''
+        raw = np.fromfile(rawPath, dtype=np.uint8)
+        arr16b = np.reshape((raw[0::2] *256 + raw[1::2]), shape)
+        return arr16b
+
+    def csv2arr(csv_path_in:str) -> np.ndarray:
+        '''
+        read a csv file as a numpy array
+
+        Parameters
+        ----------
+        csv_path_in : str
+            Path of input CSV file
+
+        Returns
+        ----------
+        arr : np.ndarray
+            the numpy array of the csv file
+        '''
+        pd_data = pd.read_csv(csv_path_in,header=None, index_col=None)
+        arr = pd_data.values
+        return arr
+
+    if filepath[-3:]== 'csv':
+        csv2arr(filepath)
+    elif filepath[-3:]== 'raw':
+        raw2arr(filepath, shape)
+
+
+
+
 
 def arr2csv(array: np.ndarray, csv_path_out: str) -> None:
     '''
@@ -40,21 +85,3 @@ def arr2csv(array: np.ndarray, csv_path_out: str) -> None:
     df = pd.DataFrame(array)
     # Convert a pd.DataFrame into csv
     df.to_csv(csv_path_out, header=False, index=False)
-
-def csv2arr(csv_path_in:str) -> np.ndarray:
-    '''
-    read a csv file as a numpy array
-
-    Parameters
-    ----------
-    csv_path_in : str
-        Path of input CSV file
-
-    Returns
-    ----------
-    arr : np.ndarray
-        the numpy array of the csv file
-    '''
-    pd_data = pd.read_csv(csv_path_in,header=None, index_col=None)
-    arr = pd_data.values
-    return arr
