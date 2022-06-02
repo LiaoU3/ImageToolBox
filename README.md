@@ -58,7 +58,8 @@ ITB.arr2csv(new_array, 'output/dogimage.csv')
 * 1.2.7 update README.md
 * 1.2.8 update the type hint of raw2arr
 * 1.3.1 replace function csv2arr and raw2arr with toArray
-
+* 1.4.1 merge **raw2arr()** and **csv2arr()** to **toArray()**, add **createDVS()**
+and fix some type hint
 ## Author
 * Vincent Liao
     * LiaoU3@github
