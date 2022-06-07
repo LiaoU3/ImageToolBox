@@ -3,9 +3,9 @@ import numpy as np
 from typing import Tuple
 from typing import Optional
 
-def toArray(filepath: str, shape: Optional[Tuple[int, int]] = None) -> np.ndarray:
+def toArray(filepath: str, shape: Optional[Tuple[int, int]] = None, dtype = '>u2') -> np.ndarray:
     '''
-    read a file and turn it to a numpy array
+    read a file(csv or raw) and turn it to a numpy array
 
     Parameters
     ----------
@@ -25,9 +25,9 @@ def toArray(filepath: str, shape: Optional[Tuple[int, int]] = None) -> np.ndarra
     >>> arr2 = toArray('./yourcsv.csv')
     '''
     
-    def raw2arr(rawPath: str, shape: Tuple[int, int]) -> np.ndarray:
+    def raw2arr(rawPath: str, shape: Tuple[int, int], dtype = '>u2') -> np.ndarray:
         '''
-        read a raw file as a numpy array
+        read a 16bit raw file as a numpy array
 
         Parameters
         ----------
@@ -41,9 +41,8 @@ def toArray(filepath: str, shape: Optional[Tuple[int, int]] = None) -> np.ndarra
         arr16b: np.array, dtype = np.uint16
             16-bit image array.
         '''
-        raw = np.fromfile(rawPath, dtype=np.uint8)
-        arr16b = np.reshape((raw[0::2] *256 + raw[1::2]), shape)
-        print(arr16b)
+        raw = np.fromfile(rawPath, dtype = dtype)
+        arr16b = np.reshape(raw, shape)
         return arr16b
 
     def csv2arr(csv_path_in:str) -> np.ndarray:
@@ -67,7 +66,7 @@ def toArray(filepath: str, shape: Optional[Tuple[int, int]] = None) -> np.ndarra
     if filepath[-3:] == 'csv':
         return csv2arr(filepath)
     elif filepath[-3:] == 'raw':
-        return raw2arr(filepath, shape)
+        return raw2arr(filepath, shape, dtype = dtype)
 
 def arr2csv(array: np.ndarray, csv_path_out: str) -> None:
     '''
@@ -94,7 +93,7 @@ def arr2csv(array: np.ndarray, csv_path_out: str) -> None:
     # Convert a pd.DataFrame into csv
     df.to_csv(csv_path_out, header=False, index=False)
 
-def createDVS(img1: np.ndarray, img2: np.ndarray, threshold: int, above_thresh_val: Optional[int] = None, below_thresh_val: Optional[int] = 0) -> np.ndarray:
+def imageDiff(img1: np.ndarray, img2: np.ndarray, threshold: int, above_thresh_val: Optional[int] = None, below_thresh_val: Optional[int] = 0) -> np.ndarray:
     '''
     return a dvs img by calculating the difference between img1 and img2
 
@@ -118,7 +117,7 @@ def createDVS(img1: np.ndarray, img2: np.ndarray, threshold: int, above_thresh_v
     ----------
     >>> arr1 = np.array([50, 50, 50]).astype(np.uint8)
     >>> arr2 = np.array([10, 40, 90]).astype(np.uint8)
-    >>> ITB.create_dvs(arr1, arr2, 10)
+    >>> ITB.imageDiff(arr1, arr2, 10)
     [255   0 255]
     '''
 

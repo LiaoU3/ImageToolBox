@@ -35,14 +35,13 @@ your structure could probably look like this below
 import ImgToolBox.ImgFile as ITB
 
 # you should put the path of raw file in the raw2arr fumction and you will get the numpy array from raw file
-array = ITB.toArray('src/catimage.raw', (300, 800))
+array = ITB.toArray('src/catimage.raw', (300, 800), dtype = '>u2')
 
 # now you can get the numpy array from the path of csv file
 new_array = ITB.toArray('src/dogimage.csv')
 
 # aftere doing this, you could get the csv file in the path you want
 ITB.arr2csv(new_array, 'output/dogimage.csv')
-
 ```
 
 ## Release History
@@ -60,6 +59,7 @@ ITB.arr2csv(new_array, 'output/dogimage.csv')
 * 1.3.1 replace function csv2arr and raw2arr with toArray
 * 1.4.1 merge **raw2arr()** and **csv2arr()** to **toArray()**, add **createDVS()**
 and fix some type hint
+* 1.5.1 modify **raw2arr()**, rename **createDVS()** with **imageDiff()** 
 ## Author
 * Vincent Liao
     * LiaoU3@github
