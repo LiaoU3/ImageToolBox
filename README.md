@@ -65,7 +65,8 @@ and fix some type hint
     * LiaoU3@github
 * Ian Lin
     * ianlin830410@github
-
+* Kevin Kuo
+    * https://github.com/Kuo-TingKai
 ## License
 ```
 MIT License
