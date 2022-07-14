@@ -5,7 +5,7 @@ with open("README.md","r") as fh:
 
 setuptools.setup(
 	name = "ImgToolBox",
-	version = "1.5.1",
+	version = "1.6.0",
 	author = "LiaoU3",
 	author_email = "vincent932693@gmail.com",
 	description = "A package about the transformations between raw, csv and numpy array",

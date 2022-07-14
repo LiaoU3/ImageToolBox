@@ -1,5 +1,7 @@
+from optparse import Option
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from typing import Tuple
 from typing import Optional
 
@@ -21,8 +23,8 @@ def toArray(filepath: str, shape: Optional[Tuple[int, int]] = None, dtype = '>u2
     
     Usage
     ------
-    >>> arr1 = toArray('./yourraw.raw', (300, 800))
-    >>> arr2 = toArray('./yourcsv.csv')
+    >>> arr1 = ITB.toArray('./yourraw.raw', (300, 800))
+    >>> arr2 = ITB.toArray('./yourcsv.csv')
     '''
     
     def raw2arr(rawPath: str, shape: Tuple[int, int], dtype = '>u2') -> np.ndarray:
@@ -86,7 +88,7 @@ def arr2csv(array: np.ndarray, csv_path_out: str) -> None:
     Usage
     ---------
     >>> arr = np.array([1, 2, 3])
-    >>> arr2csv(arr, './yourcsv.csv')
+    >>> ITB.arr2csv(arr, './yourcsv.csv')
     '''
     # Convert a np.array into pd.DataFrame
     df = pd.DataFrame(array)
@@ -128,3 +130,40 @@ def imageDiff(img1: np.ndarray, img2: np.ndarray, threshold: int, above_thresh_v
     dvs[dvs > threshold] = above_thresh_val
     dvs[threshold >= dvs] = below_thresh_val
     return dvs
+
+def saveHist(src: np.ndarray, path: str = "output.png", bins: int = 256, title: str = "", xlim: Optional[tuple] = None, ylim: Optional[tuple] = None ) -> None:
+    '''
+    Save a histogram for the source image
+
+    Parameters
+    ----------
+    src: np.ndarray
+        the source image
+    path: str
+        the output path of histogram
+    bins: int
+        the bins of histogram, usually be 256 or 1024
+    title: str
+        the title of histogram, usually be the image name
+    xlim: Optional[tuple]
+        the limitation of x
+    ylim: Optional[tuple]
+        the limitation of y
+    Returns
+    ----------
+    None
+
+    Usage
+    ----------
+    >>> arr = np.array([50, 50, 50]).astype(np.uint8)
+    >>> ITB.saveHist(arr, 'myHistogram.png', bins = 256, title = "arr", xlim=(0, 100), ylim=(0, 1000))
+    '''
+    plt.hist(src.flatten(), bins)
+    plt.title(title)
+    plt.xlabel('Intensity')
+    plt.ylabel('Count')
+    if xlim:
+        plt.xlim(xlim)
+    if ylim:
+        plt.ylim(ylim)
+    plt.savefig(path)

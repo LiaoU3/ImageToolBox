@@ -4,16 +4,18 @@ This is a python module to help us to do the tranformations between raw file, cs
 
 ## Requirements
 It would be better if you got those version number bigger than these below
-* python>=3.9
-* numpy>=1.22
-* pandas>=1.4
-
+* python >= 3.9
+* numpy >= 1.22
+* pandas >= 1.4
+* matplotlib >= 3.4.3
+  
 you can download those module for the latest version with the command below
 
 ```shell
 handsomeguy@supercomputer:~$ pip install ImgToolBox
 handsomeguy@supercomputer:~$ pip install numpy
 handsomeguy@supercomputer:~$ pip install pandas
+handsomeguy@supercomputer:~$ pip install matplotlib
 ```
 ## Usage example
 your structure could probably look like this below
@@ -37,11 +39,20 @@ import ImgToolBox.ImgFile as ITB
 # you should put the path of raw file in the raw2arr fumction and you will get the numpy array from raw file
 array = ITB.toArray('src/catimage.raw', (300, 800), dtype = '>u2')
 
-# now you can get the numpy array from the path of csv file
+# you can get the numpy array from the path of csv file
 new_array = ITB.toArray('src/dogimage.csv')
 
 # aftere doing this, you could get the csv file in the path you want
 ITB.arr2csv(new_array, 'output/dogimage.csv')
+
+# you can create a frame difference image by doing this
+arr1 = np.array([50, 50, 50]).astype(np.uint8)
+arr2 = np.array([10, 40, 90]).astype(np.uint8)
+arr3 = ITB.imageDiff(arr1, arr2, 10)
+# arr3 = [255   0 255]
+
+# you can easily transform image array to histogram
+ITB.saveHist(array, 'myHistogram.png', bins = 1024, title = "arr", xlim=(0, 1024), ylim=(0, 10000))
 ```
 
 ## Release History
@@ -60,13 +71,14 @@ ITB.arr2csv(new_array, 'output/dogimage.csv')
 * 1.4.1 merge **raw2arr()** and **csv2arr()** to **toArray()**, add **createDVS()**
 and fix some type hint
 * 1.5.1 modify **raw2arr()**, rename **createDVS()** with **imageDiff()** 
+* 1.6.0 Add **saveHist()** which can easily transform image array to histogram and fix some hint
 ## Author
 * Vincent Liao
     * LiaoU3@github
 * Ian Lin
     * ianlin830410@github
 * Kevin Kuo
-    * https://github.com/Kuo-TingKai
+    * Kuo-TingKai@github
 ## License
 ```
 MIT License
