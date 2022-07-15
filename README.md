@@ -72,6 +72,8 @@ ITB.saveHist(array, 'myHistogram.png', bins = 1024, title = "arr", xlim=(0, 1024
 and fix some type hint
 * 1.5.1 modify **raw2arr()**, rename **createDVS()** with **imageDiff()** 
 * 1.6.0 Add **saveHist()** which can easily transform image array to histogram and fix some hint
+* 1.6.1 Modify **saveHist()** : fixed the bug that plot on the same figure
+
 ## Author
 * Vincent Liao
     * LiaoU3@github

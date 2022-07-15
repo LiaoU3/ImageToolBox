@@ -158,10 +158,13 @@ def saveHist(src: np.ndarray, path: str = "output.png", bins: int = 256, title: 
     >>> arr = np.array([50, 50, 50]).astype(np.uint8)
     >>> ITB.saveHist(arr, 'myHistogram.png', bins = 256, title = "arr", xlim=(0, 100), ylim=(0, 1000))
     '''
+    plt.figure(0)
+    plt.subplot
+    plt.clf()
     plt.hist(src.flatten(), bins)
     plt.title(title)
     plt.xlabel('Intensity')
-    plt.ylabel('Count')
+    plt.ylabel('Histogram')
     if xlim:
         plt.xlim(xlim)
     if ylim:
